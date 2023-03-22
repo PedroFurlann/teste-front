@@ -10,9 +10,18 @@ export function Home() {
   }
 
   const [posts, setPosts] = useState<PostProps[]>([]);
+
   async function getPosts() {
-    await api.get("/posts").then((response) => setPosts(response.data));
+    try {
+      await api
+        .get("/posts")
+        .then((response) => setPosts(response.data.slice(0, 1)));
+    } catch (error) {
+      throw new Error("Não foi possível carregar os posts da página");
+      console.log(error);
+    }
   }
+
 
   useEffect(() => {
     getPosts();
@@ -20,13 +29,12 @@ export function Home() {
 
   return (
     <ul>
-      {posts && (
-        posts.map((post) =>
+      {posts &&
+        posts.map((post) => (
           <li key={post.id}>
             <b>{post.body}</b>
           </li>
-        )
-      )}
+        ))}
     </ul>
-  )
+  );
 }
