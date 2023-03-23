@@ -1,7 +1,14 @@
 import { useEffect, useState } from "react";
-import { PostCard } from "../../components/PostCard";
+import { Avatar } from "../../components/Avatar";
 import api from "../../lib/axios";
-import { Container } from "./styles";
+import {
+  Container,
+  ContentContainer,
+  PostContainer,
+  PostHeader,
+  ShowCommentsButton,
+  UserInfo,
+} from "./styles";
 
 interface PostProps {
   userId: number;
@@ -29,6 +36,15 @@ export function Home() {
   const [posts, setPosts] = useState<PostProps[]>([]);
   const [users, setUsers] = useState<UserProps[]>([]);
   const [comments, setComments] = useState<CommentProps[]>([]);
+  const [showComments, setShowComments] = useState<number[]>([]);
+
+  function handleShowComments(postId: number) {
+    if (showComments.includes(postId)) {
+      setShowComments(showComments.filter((id) => id !== postId));
+    } else {
+      setShowComments([...showComments, postId]);
+    }
+  }
 
   async function fetchPosts() {
     try {
@@ -54,7 +70,7 @@ export function Home() {
     try {
       await api.get("/comments").then((response) => setComments(response.data));
     } catch (error) {
-      console.log(error)
+      console.log(error);
       throw new Error("Não foi possível carregar os comentário desse post");
     }
   }
@@ -62,19 +78,37 @@ export function Home() {
   useEffect(() => {
     fetchUsers();
     fetchPosts();
+    fecthComments();
   }, []);
 
   return (
     <Container>
       {posts &&
         posts.map((post) => (
-          <PostCard
-            title={post.title}
-            body={post.body}
-            key={post.id}
-            username={users.find((user) => user.id === post.userId)!.username}
-            realNameUser={users.find((user) => user.id === post.userId)!.name}
-          />
+          <PostContainer>
+            <PostHeader>
+              <Avatar />
+              <UserInfo>
+                <strong>
+                  {users.find((user) => user.id === post.userId)?.username}
+                </strong>
+                <span>
+                  {users.find((user) => user.id === post.userId)?.name}
+                </span>
+              </UserInfo>
+            </PostHeader>
+
+            <ContentContainer>
+              <p>{post.title}</p>
+              <p>{post.body}</p>
+            </ContentContainer>
+
+            <ShowCommentsButton onClick={() => handleShowComments(post.id)}>
+              {showComments.includes(post.id)
+                ? "Recolher comentários"
+                : "Mostrar comentários"}
+            </ShowCommentsButton>
+          </PostContainer>
         ))}
     </Container>
   );
