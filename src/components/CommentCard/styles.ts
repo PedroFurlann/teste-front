@@ -27,7 +27,16 @@ export const ContentContainer = styled.div`
   header {
     display: flex;
     align-items: flex-start;
+
+    strong {
+    font-size: 1.125rem;
+    margin-top: 1rem;
+    color: ${props => props.theme["gray-300"]};
+    margin-bottom: 0.5rem;
+    }
   }
+
+  
 
   strong {
     margin-top: 1rem;
@@ -35,8 +44,7 @@ export const ContentContainer = styled.div`
   }
 
   p {
-    font-size: 0.75rem;
-    margin-top: 1rem;
+    margin-top: 0.875rem;
     color: ${props => props.theme["gray-300"]};
   }
 `

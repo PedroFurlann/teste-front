@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { Avatar } from "../../components/Avatar";
+import { CommentCard } from "../../components/CommentCard";
 import api from "../../lib/axios";
 import {
+  CommentsList,
   Container,
   ContentContainer,
   PostContainer,
@@ -108,6 +110,16 @@ export function Home() {
                 ? "Recolher comentários"
                 : "Mostrar comentários"}
             </ShowCommentsButton>
+
+            {showComments.includes(post.id) && (
+              <CommentsList>
+                {comments
+                  .filter((comment) => comment.postId === post.id)
+                  .map((comment) => (
+                    <CommentCard key={comment.id} username={comment.email} title={comment.name} body={comment.body}  />
+                  ))}
+              </CommentsList>
+            )}
           </PostContainer>
         ))}
     </Container>

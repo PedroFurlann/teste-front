@@ -8,10 +8,12 @@ interface CommentCardProps {
 }
 
 export function CommentCard({ username, title, body }: CommentCardProps) {
-  <Container>
-    <Avatar />
+  return (
+    <Container>
+    
     
     <ContentContainer>
+      <Avatar />
       <header>
         <UserInfo>
           <strong>{username}</strong>
@@ -22,4 +24,5 @@ export function CommentCard({ username, title, body }: CommentCardProps) {
       <p>{body}</p>
     </ContentContainer>
   </Container>
+  )
 }

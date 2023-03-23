@@ -69,3 +69,7 @@ export const ShowCommentsButton = styled.button`
     background-color: ${(props) => props.theme["green-700"]};
   }
 `;
+
+export const CommentsList = styled.div`
+  margin-top: 2rem;
+`
