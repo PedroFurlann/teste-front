@@ -1,13 +1,18 @@
 import { useEffect, useState } from "react";
+import { Header } from "../../components/Header";
+import { PostCard } from "../../components/PostCard";
 import api from "../../lib/axios";
+import { Container } from "./styles";
+
+interface PostProps {
+  userId: number;
+  id: number;
+  title: string;
+  body: string;
+}
 
 export function Home() {
-  interface PostProps {
-    userId: number;
-    id: number;
-    title: string;
-    body: string;
-  }
+  
 
   const [posts, setPosts] = useState<PostProps[]>([]);
 
@@ -28,13 +33,10 @@ export function Home() {
   }, []);
 
   return (
-    <ul>
-      {posts &&
-        posts.map((post) => (
-          <li key={post.id}>
-            <b>{post.body}</b>
-          </li>
-        ))}
-    </ul>
+    <Container>
+      {posts && posts.map(post => (
+        <PostCard title={post.title} body={post.body} />
+      ))}
+    </Container>
   );
 }
