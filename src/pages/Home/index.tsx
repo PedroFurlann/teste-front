@@ -85,7 +85,7 @@ export function Home() {
     <Container>
       {posts &&
         posts.map((post) => (
-          <PostContainer>
+          <PostContainer key={post.id}>
             <PostHeader>
               <Avatar />
               <UserInfo>
@@ -99,7 +99,7 @@ export function Home() {
             </PostHeader>
 
             <ContentContainer>
-              <p>{post.title}</p>
+              <strong>{post.title}</strong>
               <p>{post.body}</p>
             </ContentContainer>
 

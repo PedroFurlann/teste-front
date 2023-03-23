@@ -47,6 +47,11 @@ export const ContentContainer = styled.article`
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
 
+  strong {
+    margin-top: 1rem;
+    font-size: 1.125rem;
+  }
+
   p {
     margin-top: 1rem;
   }
