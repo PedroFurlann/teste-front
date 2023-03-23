@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Avatar } from "../../components/Avatar";
 import { CommentCard } from "../../components/CommentCard";
+import { Loading } from "../../components/Loading";
 import api from "../../lib/axios";
 import {
   CommentsList,
@@ -39,6 +40,7 @@ export function Home() {
   const [users, setUsers] = useState<UserProps[]>([]);
   const [comments, setComments] = useState<CommentProps[]>([]);
   const [showComments, setShowComments] = useState<number[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   function handleShowComments(postId: number) {
     if (showComments.includes(postId)) {
@@ -50,30 +52,39 @@ export function Home() {
 
   async function fetchPosts() {
     try {
+      setIsLoading(true);
       await api
         .get("/posts")
         .then((response) => setPosts(response.data.slice(0, 11)));
     } catch (error) {
       console.log(error);
       throw new Error("Não foi possível carregar os posts da página");
+    } finally {
+        setIsLoading(false)
     }
   }
 
   async function fetchUsers() {
     try {
+      setIsLoading(true)
       await api.get("/users").then((response) => setUsers(response.data));
     } catch (error) {
       console.log(error);
       throw new Error("Não foi possível carregar as informações dos usuários");
+    } finally {
+        setIsLoading(false)
     }
   }
 
   async function fecthComments() {
     try {
+      setIsLoading(true)
       await api.get("/comments").then((response) => setComments(response.data));
     } catch (error) {
       console.log(error);
       throw new Error("Não foi possível carregar os comentário desse post");
+    } finally {
+        setIsLoading(false)
     }
   }
 
@@ -87,40 +98,48 @@ export function Home() {
     <Container>
       {posts &&
         posts.map((post) => (
-          <PostContainer key={post.id}>
-            <PostHeader>
-              <Avatar />
-              <UserInfo>
-                <strong>
-                  {users.find((user) => user.id === post.userId)?.username}
-                </strong>
-                <span>
-                  {users.find((user) => user.id === post.userId)?.name}
-                </span>
-              </UserInfo>
-            </PostHeader>
-
-            <ContentContainer>
-              <strong>{post.title}</strong>
-              <p>{post.body}</p>
-            </ContentContainer>
-
-            <ShowCommentsButton onClick={() => handleShowComments(post.id)}>
-              {showComments.includes(post.id)
-                ? "Recolher comentários"
-                : "Mostrar comentários"}
-            </ShowCommentsButton>
-
-            {showComments.includes(post.id) && (
-              <CommentsList>
-                {comments
-                  .filter((comment) => comment.postId === post.id)
-                  .map((comment) => (
-                    <CommentCard key={comment.id} username={comment.email} title={comment.name} body={comment.body}  />
-                  ))}
-              </CommentsList>
+          <>
+            {isLoading ? (
+              <Loading />
+            ) : (
+              <PostContainer key={post.id}>
+                <PostHeader>
+                  <Avatar />
+                  <UserInfo>
+                    <strong>
+                      {users.find((user) => user.id === post.userId)?.username}
+                    </strong>
+                    <span>
+                      {users.find((user) => user.id === post.userId)?.name}
+                    </span>
+                  </UserInfo>
+                </PostHeader>
+                <ContentContainer>
+                  <strong>{post.title}</strong>
+                  <p>{post.body}</p>
+                </ContentContainer>
+                <ShowCommentsButton onClick={() => handleShowComments(post.id)}>
+                  {showComments.includes(post.id)
+                    ? "Recolher comentários"
+                    : "Mostrar comentários"}
+                </ShowCommentsButton>
+                {showComments.includes(post.id) && (
+                  <CommentsList>
+                    {comments
+                      .filter((comment) => comment.postId === post.id)
+                      .map((comment) => (
+                        <CommentCard
+                          key={comment.id}
+                          username={comment.email}
+                          title={comment.name}
+                          body={comment.body}
+                        />
+                      ))}
+                  </CommentsList>
+                )}
+              </PostContainer>
             )}
-          </PostContainer>
+          </>
         ))}
     </Container>
   );
