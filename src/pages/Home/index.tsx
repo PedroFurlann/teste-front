@@ -17,14 +17,18 @@ interface UserProps {
   email: string;
 }
 
-interface PostUserProps {
+export interface CommentProps {
+  id: number;
+  postId: number;
   name: string;
-  username: string;
+  email: string;
+  body: string;
 }
 
 export function Home() {
   const [posts, setPosts] = useState<PostProps[]>([]);
   const [users, setUsers] = useState<UserProps[]>([]);
+  const [comments, setComments] = useState<CommentProps[]>([]);
 
   async function fetchPosts() {
     try {
@@ -32,8 +36,8 @@ export function Home() {
         .get("/posts")
         .then((response) => setPosts(response.data.slice(0, 11)));
     } catch (error) {
-      throw new Error("Não foi possível carregar os posts da página");
       console.log(error);
+      throw new Error("Não foi possível carregar os posts da página");
     }
   }
 
@@ -41,8 +45,17 @@ export function Home() {
     try {
       await api.get("/users").then((response) => setUsers(response.data));
     } catch (error) {
-      throw new Error("Não foi possível carregar as informações dos usuários");
       console.log(error);
+      throw new Error("Não foi possível carregar as informações dos usuários");
+    }
+  }
+
+  async function fecthComments() {
+    try {
+      await api.get("/comments").then((response) => setComments(response.data));
+    } catch (error) {
+      console.log(error)
+      throw new Error("Não foi possível carregar os comentário desse post");
     }
   }
 
