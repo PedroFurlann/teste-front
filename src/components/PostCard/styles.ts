@@ -13,6 +13,7 @@ export const Container = styled.article`
 export const PostHeader = styled.header`
   display: flex;
   align-items: center;
+  gap: 1rem;
 `;
 
 export const UserInfo = styled.div`

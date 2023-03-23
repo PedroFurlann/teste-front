@@ -1,21 +1,21 @@
+import { Avatar } from "../Avatar";
 import { Container, ContentContainer, PostHeader, UserInfo } from "./styles";
 
 interface PostProps {
   title: string;
   body: string;
-  user?: {
-    name: string;
-    username: string;
-  };
+  realNameUser: string;
+  username: string
 }
 
-export function PostCard({ title, body, user }: PostProps) {
+export function PostCard({ title, body, realNameUser, username }: PostProps) {
   return (
     <Container>
       <PostHeader>
+        <Avatar />
         <UserInfo>
-          <strong>{user?.username}</strong>
-          <span>{user?.name}</span>
+          <strong>{username}</strong>
+          <span>{realNameUser}</span>
         </UserInfo>
       </PostHeader>
 
