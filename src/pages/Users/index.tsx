@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { Avatar } from "../../components/Avatar";
 import { Loading } from "../../components/Loading";
 import api from "../../lib/axios";
@@ -14,6 +15,7 @@ import {
 } from "./styles";
 
 interface UserProps {
+  id: number;
   name: string;
   username: string;
   email: string;
@@ -24,6 +26,10 @@ interface UserProps {
 export function Users() {
   const [users, setUsers] = useState<UserProps[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  const params = useParams();
+
+  const userId = Number(params.userId);
 
   async function fetchUsers() {
     try {
@@ -41,6 +47,8 @@ export function Users() {
     fetchUsers();
   }, []);
 
+  console.log(userId);
+
   return (
     <Container>
       {users.map((user) => (
@@ -48,16 +56,22 @@ export function Users() {
           {isLoading ? (
             <Loading />
           ) : (
-            <CardContainer>
-              <Avatar />
-              <UserInfoContainer>
-                <UserNameContainer>{user.name}</UserNameContainer>
-                <UserUsernameContainer>{user.username}</UserUsernameContainer>
-                <UserEmailContainer>{user.email}</UserEmailContainer>
-                <UserPhoneContainer>{user.phone}</UserPhoneContainer>
-                <UserWebsiteContainer>{user.website}</UserWebsiteContainer>
-              </UserInfoContainer>
-            </CardContainer>
+            <>
+              {user.id === userId && (
+                <CardContainer>
+                  <Avatar />
+                  <UserInfoContainer>
+                    <UserUsernameContainer>{user.username}</UserUsernameContainer>
+                    <UserNameContainer>
+                      {user.name}
+                    </UserNameContainer>
+                    <UserEmailContainer>{user.email}</UserEmailContainer>
+                    <UserPhoneContainer>{user.phone}</UserPhoneContainer>
+                    <UserWebsiteContainer>{user.website}</UserWebsiteContainer>
+                  </UserInfoContainer>
+                </CardContainer>
+              )}
+            </>
           )}
         </>
       ))}

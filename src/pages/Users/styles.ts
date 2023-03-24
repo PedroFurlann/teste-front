@@ -25,11 +25,11 @@ export const UserInfoContainer = styled.div`
   text-align: center;
 `;
 
-export const UserNameContainer = styled.h2`
+export const UserUsernameContainer = styled.h2`
   margin: 0;
 `;
 
-export const UserUsernameContainer = styled.p`
+export const UserNameContainer = styled.p`
   margin: 0;
 `;
 

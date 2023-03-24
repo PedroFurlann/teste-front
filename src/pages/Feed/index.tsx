@@ -57,7 +57,7 @@ export function Feed() {
   }
 
   function handleGoToProfile(userId: number | undefined) {
-    navigate(`user/${userId}`);
+    navigate(`/user/${userId}`);
   }
 
   async function fetchPosts() {
