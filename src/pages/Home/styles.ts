@@ -13,8 +13,7 @@ export const TitleContainer = styled.h1`
   position: relative;
   text-transform: uppercase;
   text-align: center;
-  color: ${props => props.theme["gray-100"]};
-
+  color: ${(props) => props.theme["gray-100"]};
 
   @media screen and (max-width: 768px) {
     font-size: 3rem;
@@ -43,4 +42,4 @@ export const ButtonContainer = styled.button`
     font-size: 1rem;
     padding: 0.5rem 4rem;
   }
-`
+`;
