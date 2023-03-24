@@ -37,7 +37,7 @@ export interface CommentProps {
   body: string;
 }
 
-export function Home() {
+export function Feed() {
   const [posts, setPosts] = useState<PostProps[]>([]);
   const [users, setUsers] = useState<UserProps[]>([]);
   const [comments, setComments] = useState<CommentProps[]>([]);
