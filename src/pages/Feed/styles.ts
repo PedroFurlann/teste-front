@@ -66,9 +66,10 @@ export const ShowCommentsButton = styled.button`
   background-color: ${(props) => props.theme["green-500"]};
   color: ${(props) => props.theme["gray-100"]};
   border: none;
-  padding: 8px 16px;
-  margin-top: 10px;
+  padding: 0.5rem 1rem;
+  margin-top: 0.625rem;
   cursor: pointer;
+  border-radius: 8px;
 
   &:hover {
     background-color: ${(props) => props.theme["green-700"]};
