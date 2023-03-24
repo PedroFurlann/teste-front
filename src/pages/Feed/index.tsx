@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Avatar } from "../../components/Avatar";
 import { CommentCard } from "../../components/CommentCard";
 import { Header } from "../../components/Header";
@@ -45,12 +46,18 @@ export function Feed() {
   const [showComments, setShowComments] = useState<number[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  const navigate = useNavigate();
+
   function handleShowComments(postId: number) {
     if (showComments.includes(postId)) {
       setShowComments(showComments.filter((id) => id !== postId));
     } else {
       setShowComments([...showComments, postId]);
     }
+  }
+
+  function handleGoToProfile(userId: number | undefined) {
+    navigate(`user/${userId}`);
   }
 
   async function fetchPosts() {
@@ -111,24 +118,44 @@ export function Feed() {
                 ) : (
                   <PostContainer key={post.id}>
                     <PostHeader>
-                      <GoToProfileButton>
+                      <GoToProfileButton
+                        onClick={() =>
+                          handleGoToProfile(
+                            users.find((user) => user.id === post.userId)?.id
+                          )
+                        }
+                      >
                         <Avatar />
                       </GoToProfileButton>
                       <UserInfo>
                         <strong>
-                          <GoToProfileButton>
-                          
-                              {
+                          <GoToProfileButton
+                            onClick={() =>
+                              handleGoToProfile(
                                 users.find((user) => user.id === post.userId)
-                                  ?.username
-                              }
-                          
+                                  ?.id
+                              )
+                            }
+                          >
+                            {
+                              users.find((user) => user.id === post.userId)
+                                ?.username
+                            }
                           </GoToProfileButton>
                         </strong>
                         <span>
-                          <GoToProfileButton>
-                          
-                              {users.find((user) => user.id === post.userId)?.name}
+                          <GoToProfileButton
+                            onClick={() =>
+                              handleGoToProfile(
+                                users.find((user) => user.id === post.userId)
+                                  ?.id
+                              )
+                            }
+                          >
+                            {
+                              users.find((user) => user.id === post.userId)
+                                ?.name
+                            }
                           </GoToProfileButton>
                         </span>
                       </UserInfo>
