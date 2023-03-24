@@ -3,6 +3,7 @@ import { Avatar } from "../../components/Avatar";
 import { CommentCard } from "../../components/CommentCard";
 import { Header } from "../../components/Header";
 import { Loading } from "../../components/Loading";
+import { Sidebar } from "../../components/Sidebar";
 import api from "../../lib/axios";
 import {
   CommentsList,
@@ -99,6 +100,7 @@ export function Home() {
     <>
       <Header />
       <Container>
+        <Sidebar />
         {posts &&
           posts.map((post) => (
             <>
