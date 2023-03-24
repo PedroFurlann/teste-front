@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Avatar } from "../../components/Avatar";
 import { CommentCard } from "../../components/CommentCard";
+import { Header } from "../../components/Header";
 import { Loading } from "../../components/Loading";
 import api from "../../lib/axios";
 import {
@@ -60,31 +61,31 @@ export function Home() {
       console.log(error);
       throw new Error("Não foi possível carregar os posts da página");
     } finally {
-        setIsLoading(false)
+      setIsLoading(false);
     }
   }
 
   async function fetchUsers() {
     try {
-      setIsLoading(true)
+      setIsLoading(true);
       await api.get("/users").then((response) => setUsers(response.data));
     } catch (error) {
       console.log(error);
       throw new Error("Não foi possível carregar as informações dos usuários");
     } finally {
-        setIsLoading(false)
+      setIsLoading(false);
     }
   }
 
   async function fecthComments() {
     try {
-      setIsLoading(true)
+      setIsLoading(true);
       await api.get("/comments").then((response) => setComments(response.data));
     } catch (error) {
       console.log(error);
       throw new Error("Não foi possível carregar os comentário desse post");
     } finally {
-        setIsLoading(false)
+      setIsLoading(false);
     }
   }
 
@@ -95,52 +96,60 @@ export function Home() {
   }, []);
 
   return (
-    <Container>
-      {posts &&
-        posts.map((post) => (
-          <>
-            {isLoading ? (
-              <Loading />
-            ) : (
-              <PostContainer key={post.id}>
-                <PostHeader>
-                  <Avatar />
-                  <UserInfo>
-                    <strong>
-                      {users.find((user) => user.id === post.userId)?.username}
-                    </strong>
-                    <span>
-                      {users.find((user) => user.id === post.userId)?.name}
-                    </span>
-                  </UserInfo>
-                </PostHeader>
-                <ContentContainer>
-                  <strong>{post.title}</strong>
-                  <p>{post.body}</p>
-                </ContentContainer>
-                <ShowCommentsButton onClick={() => handleShowComments(post.id)}>
-                  {showComments.includes(post.id)
-                    ? "Recolher comentários"
-                    : "Mostrar comentários"}
-                </ShowCommentsButton>
-                {showComments.includes(post.id) && (
-                  <CommentsList>
-                    {comments
-                      .filter((comment) => comment.postId === post.id)
-                      .map((comment) => (
-                        <CommentCard
-                          key={comment.id}
-                          username={comment.email}
-                          title={comment.name}
-                          body={comment.body}
-                        />
-                      ))}
-                  </CommentsList>
-                )}
-              </PostContainer>
-            )}
-          </>
-        ))}
-    </Container>
+    <>
+      <Header />
+      <Container>
+        {posts &&
+          posts.map((post) => (
+            <>
+              {isLoading ? (
+                <Loading />
+              ) : (
+                <PostContainer key={post.id}>
+                  <PostHeader>
+                    <Avatar />
+                    <UserInfo>
+                      <strong>
+                        {
+                          users.find((user) => user.id === post.userId)
+                            ?.username
+                        }
+                      </strong>
+                      <span>
+                        {users.find((user) => user.id === post.userId)?.name}
+                      </span>
+                    </UserInfo>
+                  </PostHeader>
+                  <ContentContainer>
+                    <strong>{post.title}</strong>
+                    <p>{post.body}</p>
+                  </ContentContainer>
+                  <ShowCommentsButton
+                    onClick={() => handleShowComments(post.id)}
+                  >
+                    {showComments.includes(post.id)
+                      ? "Recolher comentários"
+                      : "Mostrar comentários"}
+                  </ShowCommentsButton>
+                  {showComments.includes(post.id) && (
+                    <CommentsList>
+                      {comments
+                        .filter((comment) => comment.postId === post.id)
+                        .map((comment) => (
+                          <CommentCard
+                            key={comment.id}
+                            username={comment.email}
+                            title={comment.name}
+                            body={comment.body}
+                          />
+                        ))}
+                    </CommentsList>
+                  )}
+                </PostContainer>
+              )}
+            </>
+          ))}
+      </Container>
+    </>
   );
 }
