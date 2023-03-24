@@ -4,7 +4,6 @@ export const Container = styled.aside`
   background-color: ${props => props.theme["gray-800"]};
   border-radius: 8px;
   overflow: hidden;
-  margin-bottom: 0.5rem;
 `
 
 export const CoverImage = styled.img`

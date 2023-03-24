@@ -9,6 +9,9 @@ export const Container = styled.div`
   gap: 2rem;
   align-items: flex-start;
 
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const PostContainer = styled.article`
