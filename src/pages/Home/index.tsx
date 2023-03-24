@@ -101,56 +101,58 @@ export function Home() {
       <Header />
       <Container>
         <Sidebar />
-        {posts &&
-          posts.map((post) => (
-            <>
-              {isLoading ? (
-                <Loading />
-              ) : (
-                <PostContainer key={post.id}>
-                  <PostHeader>
-                    <Avatar />
-                    <UserInfo>
-                      <strong>
-                        {
-                          users.find((user) => user.id === post.userId)
-                            ?.username
-                        }
-                      </strong>
-                      <span>
-                        {users.find((user) => user.id === post.userId)?.name}
-                      </span>
-                    </UserInfo>
-                  </PostHeader>
-                  <ContentContainer>
-                    <strong>{post.title}</strong>
-                    <p>{post.body}</p>
-                  </ContentContainer>
-                  <ShowCommentsButton
-                    onClick={() => handleShowComments(post.id)}
-                  >
-                    {showComments.includes(post.id)
-                      ? "Recolher comentários"
-                      : "Mostrar comentários"}
-                  </ShowCommentsButton>
-                  {showComments.includes(post.id) && (
-                    <CommentsList>
-                      {comments
-                        .filter((comment) => comment.postId === post.id)
-                        .map((comment) => (
-                          <CommentCard
-                            key={comment.id}
-                            username={comment.email}
-                            title={comment.name}
-                            body={comment.body}
-                          />
-                        ))}
-                    </CommentsList>
-                  )}
-                </PostContainer>
-              )}
-            </>
-          ))}
+        <main>
+          {posts &&
+            posts.map((post) => (
+              <>
+                {isLoading ? (
+                  <Loading />
+                ) : (
+                  <PostContainer key={post.id}>
+                    <PostHeader>
+                      <Avatar />
+                      <UserInfo>
+                        <strong>
+                          {
+                            users.find((user) => user.id === post.userId)
+                              ?.username
+                          }
+                        </strong>
+                        <span>
+                          {users.find((user) => user.id === post.userId)?.name}
+                        </span>
+                      </UserInfo>
+                    </PostHeader>
+                    <ContentContainer>
+                      <strong>{post.title}</strong>
+                      <p>{post.body}</p>
+                    </ContentContainer>
+                    <ShowCommentsButton
+                      onClick={() => handleShowComments(post.id)}
+                    >
+                      {showComments.includes(post.id)
+                        ? "Recolher comentários"
+                        : "Mostrar comentários"}
+                    </ShowCommentsButton>
+                    {showComments.includes(post.id) && (
+                      <CommentsList>
+                        {comments
+                          .filter((comment) => comment.postId === post.id)
+                          .map((comment) => (
+                            <CommentCard
+                              key={comment.id}
+                              username={comment.email}
+                              title={comment.name}
+                              body={comment.body}
+                            />
+                          ))}
+                      </CommentsList>
+                    )}
+                  </PostContainer>
+                )}
+              </>
+            ))}
+        </main>
       </Container>
     </>
   );

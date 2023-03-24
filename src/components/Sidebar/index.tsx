@@ -1,6 +1,6 @@
-import { Notebook } from "@phosphor-icons/react";
+import { Notebook, PencilLine } from "@phosphor-icons/react";
 import { AvatarContainer } from "../Avatar/styles";
-import { AvatarAndProfile, Container, CoverImage } from "./styles";
+import { AvatarAndProfile, Container, CoverImage, Footer } from "./styles";
 export function Sidebar() {
   return (
     <Container>
@@ -16,6 +16,8 @@ export function Sidebar() {
         <span>Front-end Developer</span>
         <Notebook size={24} />
       </AvatarAndProfile>
+
+      <Footer />
     </Container>
   );
 }
