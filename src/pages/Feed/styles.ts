@@ -79,3 +79,19 @@ export const ShowCommentsButton = styled.button`
 export const CommentsList = styled.div`
   margin-top: 2rem;
 `
+
+export const GoToProfileButton = styled.button`
+ border: none;
+  background: none;
+  font-size: inherit;
+  color: inherit;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+
+  &:hover {
+    color: ${props => props.theme["gray-500"]};  
+    text-decoration: underline;
+  }
+`;
+  

@@ -9,6 +9,7 @@ import {
   CommentsList,
   Container,
   ContentContainer,
+  GoToProfileButton,
   PostContainer,
   PostHeader,
   ShowCommentsButton,
@@ -110,16 +111,25 @@ export function Feed() {
                 ) : (
                   <PostContainer key={post.id}>
                     <PostHeader>
-                      <Avatar />
+                      <GoToProfileButton>
+                        <Avatar />
+                      </GoToProfileButton>
                       <UserInfo>
                         <strong>
-                          {
-                            users.find((user) => user.id === post.userId)
-                              ?.username
-                          }
+                          <GoToProfileButton>
+                          
+                              {
+                                users.find((user) => user.id === post.userId)
+                                  ?.username
+                              }
+                          
+                          </GoToProfileButton>
                         </strong>
                         <span>
-                          {users.find((user) => user.id === post.userId)?.name}
+                          <GoToProfileButton>
+                          
+                              {users.find((user) => user.id === post.userId)?.name}
+                          </GoToProfileButton>
                         </span>
                       </UserInfo>
                     </PostHeader>
