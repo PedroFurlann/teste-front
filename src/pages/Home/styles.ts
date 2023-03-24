@@ -36,4 +36,9 @@ export const ButtonContainer = styled.button`
   &:hover {
     background-color: ${(props) => props.theme["green-700"]};
   }
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    padding: 0.5rem 4rem;
+  }
 `
