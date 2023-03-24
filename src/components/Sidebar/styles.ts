@@ -66,6 +66,10 @@ export const ButtonContainer = styled.button`
 
   @media (max-width: 768px) {
     font-size: 1rem;
-    padding: 0.5rem 4rem;
+    padding: 0.5rem 1rem;
+
+    svg {
+      size: 5;
+    }
   }
 `;

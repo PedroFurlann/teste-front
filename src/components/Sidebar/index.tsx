@@ -1,7 +1,16 @@
 import { House, Notebook, User } from "@phosphor-icons/react";
+import { useNavigate } from "react-router-dom";
 import { AvatarContainer } from "../Avatar/styles";
 import { AvatarAndProfile, ButtonContainer, Container, CoverImage, Footer } from "./styles";
+
 export function Sidebar() {
+
+  const navigate = useNavigate();
+
+  function handleGoToHome() {
+    navigate('/');
+  }
+
   return (
     <Container>
       <CoverImage src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=50" />
@@ -20,14 +29,9 @@ export function Sidebar() {
 
 
       <Footer>
-        <ButtonContainer>
-          Usuários do Blog
-          <User size={30} weight="fill"/>
-        </ButtonContainer>
-
-        <ButtonContainer>
+        <ButtonContainer onClick={handleGoToHome}>
           Home
-          <House size={30} weight="fill" />
+          <House size={20} weight="fill" />
         </ButtonContainer>
       </Footer>
     </Container>
