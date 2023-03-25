@@ -1,17 +1,17 @@
+import { ArrowLeft } from "@phosphor-icons/react";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Avatar } from "../../components/Avatar";
+import { Header } from "../../components/Header";
 import { Loading } from "../../components/Loading";
 import api from "../../lib/axios";
 import {
-  CardContainer,
+  ButtonContainer,
   Container,
-  UserEmailContainer,
-  UserInfoContainer,
-  UserNameContainer,
-  UserPhoneContainer,
-  UserUsernameContainer,
-  UserWebsiteContainer,
+  UserCardContainer,
+  UserCardContent,
+  UserCardField,
+  UserCardValue,
 } from "./styles";
 
 interface UserProps {
@@ -27,9 +27,15 @@ export function Users() {
   const [users, setUsers] = useState<UserProps[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  const navigate = useNavigate()
+
   const params = useParams();
 
   const userId = Number(params.userId);
+
+  function handleBackToFeed() {
+    navigate("/feed")
+  }
 
   async function fetchUsers() {
     try {
@@ -50,31 +56,55 @@ export function Users() {
   console.log(userId);
 
   return (
-    <Container>
-      {users.map((user) => (
-        <>
-          {isLoading ? (
-            <Loading />
-          ) : (
-            <>
-              {user.id === userId && (
-                <CardContainer>
-                  <Avatar />
-                  <UserInfoContainer>
-                    <UserUsernameContainer>{user.username}</UserUsernameContainer>
-                    <UserNameContainer>
-                      {user.name}
-                    </UserNameContainer>
-                    <UserEmailContainer>{user.email}</UserEmailContainer>
-                    <UserPhoneContainer>{user.phone}</UserPhoneContainer>
-                    <UserWebsiteContainer>{user.website}</UserWebsiteContainer>
-                  </UserInfoContainer>
-                </CardContainer>
-              )}
-            </>
-          )}
-        </>
-      ))}
-    </Container>
+    <>
+      <Header />
+      <Container>
+        {users.map((user) => (
+          <>
+            {user.id === userId && (
+              <>
+                {isLoading ? (
+                  <Loading />
+                ) : (
+                  <Container>
+                    <Avatar />
+                    <UserCardContainer>
+                      <UserCardContent>
+                        <div>
+                          <UserCardField>Nome:  </UserCardField>
+                          <UserCardValue>{user.name}</UserCardValue>
+                        </div>
+                        <div>
+                          <UserCardField>Username:  </UserCardField>
+                          <UserCardValue>{user.username}</UserCardValue>
+                        </div>
+                      </UserCardContent>
+                      <UserCardContent>
+                        <div>
+                          <UserCardField>Email:  </UserCardField>
+                          <UserCardValue>{user.email}</UserCardValue>
+                        </div>
+                        <div>
+                          <UserCardField>Telefone:  </UserCardField>
+                          <UserCardValue>{user.phone}</UserCardValue>
+                        </div>
+                        <div>
+                          <UserCardField>Website:</UserCardField>
+                          <UserCardValue>{user.website}</UserCardValue>
+                        </div>
+                      </UserCardContent>
+                    </UserCardContainer>
+                    <ButtonContainer onClick={handleBackToFeed}>
+                      <ArrowLeft size={20} color="#E1E1E6" weight="fill" />
+                      Voltar para o Feed
+                      </ButtonContainer>
+                  </Container>
+                )}
+              </>
+            )}
+          </>
+        ))}
+      </Container>
+    </>
   );
 }

@@ -1,47 +1,69 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
-  flex: 1;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-`
+  gap: 3rem;
+  height: 90vh;
+`;
 
-export const CardContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid #ddd;
+export const UserCardContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 0.625rem;
+  padding: 2rem;
   border-radius: 8px;
-  padding: 16px;
+  background-color: ${(props) => props.theme["gray-600"]};
+  max-width: 800px;
   width: 100%;
-  max-width: 400px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem;
+  }
 `;
 
-export const UserInfoContainer = styled.div`
+export const UserCardContent = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  text-align: center;
+  justify-content: center;
 `;
 
-export const UserUsernameContainer = styled.h2`
-  margin: 0;
+
+export const UserCardField = styled.span`
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
 `;
 
-export const UserNameContainer = styled.p`
-  margin: 0;
+export const UserCardValue = styled.span`
+  font-size: 1.125rem;
 `;
 
-export const UserEmailContainer = styled.p`
-  margin: 0;
-`;
+export const ButtonContainer = styled.button`
+  background-color: ${(props) => props.theme["green-500"]};
+  color: ${(props) => props.theme["gray-100"]};
+  border: none;
+  padding: 0.5rem 8rem;
+  margin-top: 0.625rem;
+  cursor: pointer;
+  border-radius: 8px;
 
-export const UserPhoneContainer = styled.p`
-  margin: 0;
-`;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 
-export const UserWebsiteContainer = styled.p`
-  margin: 0;
+  &:hover {
+    background-color: ${(props) => props.theme["green-700"]};
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    padding: 0.5rem 4rem;
+  }
 `;
 

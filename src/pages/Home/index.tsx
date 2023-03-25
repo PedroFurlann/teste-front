@@ -15,7 +15,7 @@ export function Home() {
 
       <ButtonContainer onClick={handleGoToFeed}>
         Acessar Feed
-        <ArrowRight size={20} color="#E1E1E6" />
+        <ArrowRight size={20} color="#E1E1E6" weight="fill" />
       </ButtonContainer>
     </Container>
   );
