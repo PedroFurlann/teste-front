@@ -30,4 +30,20 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 400;
     font-size: 1rem;
   }  
+
+  ::-webkit-scrollbar {
+    width: 0.625rem;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: ${props => props.theme["gray-600"]};
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #888;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+  }
 `
