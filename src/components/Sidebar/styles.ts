@@ -28,6 +28,10 @@ export const AvatarAndProfile = styled.div`
     margin-top: 1rem;
     color: ${(props) => props.theme["gray-100"]};
   }
+
+  a {
+    text-decoration: none;
+  }
 `;
 
 export const Footer = styled.footer`
