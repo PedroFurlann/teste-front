@@ -19,8 +19,12 @@ interface UserProps {
   name: string;
   username: string;
   email: string;
+  address: {
+    city: string
+  }
   phone: string;
   website: string;
+  
 }
 
 export function Users() {
@@ -78,11 +82,15 @@ export function Users() {
                           <UserCardField>Username:  </UserCardField>
                           <UserCardValue>{user.username}</UserCardValue>
                         </div>
-                      </UserCardContent>
-                      <UserCardContent>
                         <div>
                           <UserCardField>Email:  </UserCardField>
                           <UserCardValue>{user.email}</UserCardValue>
+                        </div>
+                      </UserCardContent>
+                      <UserCardContent>
+                        <div>
+                          <UserCardField>Cidade:  </UserCardField>
+                          <UserCardValue>{user.address.city}</UserCardValue>
                         </div>
                         <div>
                           <UserCardField>Telefone:  </UserCardField>

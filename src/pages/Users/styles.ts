@@ -11,7 +11,7 @@ export const Container = styled.div`
 
 export const UserCardContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 3fr);
   grid-gap: 0.625rem;
   padding: 2rem;
   border-radius: 8px;
@@ -34,9 +34,9 @@ export const UserCardContent = styled.div`
 
 
 export const UserCardField = styled.span`
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 0.4rem;
 `;
 
 export const UserCardValue = styled.span`
