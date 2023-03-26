@@ -29,3 +29,13 @@ $ npm install
 $ npm run dev
 
 ```
+
+### Imagens do Website / App Images :camera:
+
+  <img src="https://raw.githubusercontent.com/PedroFurlann/teste-front/main/src/assets/teste1.png" />
+
+  <img src="https://raw.githubusercontent.com/PedroFurlann/teste-front/main/src/assets/teste2.png" />
+
+  <img src="https://raw.githubusercontent.com/PedroFurlann/teste-front/main/src/assets/teste3.png" />
+
+  <img src="https://raw.githubusercontent.com/PedroFurlann/teste-front/main/src/assets/teste4.png" />
