@@ -81,7 +81,7 @@ export const CommentsList = styled.div`
 `
 
 export const GoToProfileButton = styled.button`
- border: none;
+  border: none;
   background: none;
   font-size: inherit;
   color: inherit;

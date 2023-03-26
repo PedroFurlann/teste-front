@@ -1,9 +1,16 @@
-import { Container } from "./styles";
+import { useNavigate } from "react-router-dom";
+import { Container, GoToHomeButton } from "./styles";
 
 export function Header() {
+  const navigate = useNavigate()
+
+  function handleGoToHome() {
+    navigate("/")
+  }
+
   return (
     <Container>
-      <p>FRONT-BLOG</p>
+      <GoToHomeButton onClick={handleGoToHome}><p>FRONT-BLOG</p></GoToHomeButton>
     </Container>
   );
 }
