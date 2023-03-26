@@ -11,7 +11,10 @@
 - #### Vite
 - #### React Router DOM
 
-### Deploy
+### Deploy :arrow_down:
+
+#### [Front-Blog](https://front-blog-sepia.vercel.app/)
+
 
 ### Como Iniciar a aplicação na sua máquina :arrow_down:
 
@@ -41,6 +44,4 @@ $ npm run dev
 
   <img src="https://raw.githubusercontent.com/PedroFurlann/teste-front/main/src/assets/teste4.png" />
 
-  ### Application Deployment :arrow_down:
 
-  #### [Front-Blog](https://front-blog-sepia.vercel.app/)
