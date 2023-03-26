@@ -7,6 +7,7 @@
 - #### React
 - #### Typescript
 - #### Styled-Components
+- #### Axios
 - #### Vite
 - #### React Router DOM
 
