@@ -96,7 +96,7 @@ export function Users() {
                           <UserCardValue>{user.phone}</UserCardValue>
                         </div>
                         <div>
-                          <UserCardField>Website:</UserCardField>
+                          <UserCardField>Website: </UserCardField>
                           <UserCardValue>{user.website}</UserCardValue>
                         </div>
                       </UserCardContent>
