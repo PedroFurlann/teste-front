@@ -17,6 +17,8 @@ export function Sidebar() {
   }
 
   return (
+    // Tag </a> criada com o intuito de ir ao meu Gihub através do clique em minha foto, nome ou cargo.
+
     <Container>
       <CoverImage src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=50" />
 

@@ -56,6 +56,8 @@ export function Feed() {
     }
   }
 
+  // Função handleGoToProfile abaixo criada para ir até a página do usuário mostrando as suas informações.
+
   function handleGoToProfile(userId: number | undefined) {
     navigate(`/user/${userId}`);
   }
