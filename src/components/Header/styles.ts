@@ -1,16 +1,16 @@
 import styled from "styled-components";
 
 export const Container = styled.header`
-  background-color: ${props => props.theme["gray-800"]};
+  background-color: ${(props) => props.theme["gray-800"]};
   display: flex;
   justify-content: center;
   padding: 1.5rem 0;
 
   p {
     font-weight: bolder;
-    color: ${props => props.theme["gray-100"]};
+    color: ${(props) => props.theme["gray-100"]};
   }
-`
+`;
 
 export const GoToHomeButton = styled.button`
   border: none;
@@ -22,7 +22,7 @@ export const GoToHomeButton = styled.button`
   cursor: pointer;
 
   &:hover {
-    color: ${props => props.theme["gray-500"]};  
+    color: ${(props) => props.theme["gray-500"]};
     text-decoration: underline;
   }
-`;  
+`;

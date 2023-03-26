@@ -5,5 +5,5 @@ export function Loading() {
     <Container>
       <LoadingSpinner />
     </Container>
-  )
+  );
 }

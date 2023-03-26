@@ -20,25 +20,24 @@ interface UserProps {
   username: string;
   email: string;
   address: {
-    city: string
-  }
+    city: string;
+  };
   phone: string;
   website: string;
-  
 }
 
 export function Users() {
   const [users, setUsers] = useState<UserProps[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const params = useParams();
 
   const userId = Number(params.userId);
 
   function handleBackToFeed() {
-    navigate("/feed")
+    navigate("/feed");
   }
 
   async function fetchUsers() {
@@ -75,25 +74,25 @@ export function Users() {
                     <UserCardContainer>
                       <UserCardContent>
                         <div>
-                          <UserCardField>Nome:  </UserCardField>
+                          <UserCardField>Nome: </UserCardField>
                           <UserCardValue>{user.name}</UserCardValue>
                         </div>
                         <div>
-                          <UserCardField>Username:  </UserCardField>
+                          <UserCardField>Username: </UserCardField>
                           <UserCardValue>{user.username}</UserCardValue>
                         </div>
                         <div>
-                          <UserCardField>Email:  </UserCardField>
+                          <UserCardField>Email: </UserCardField>
                           <UserCardValue>{user.email}</UserCardValue>
                         </div>
                       </UserCardContent>
                       <UserCardContent>
                         <div>
-                          <UserCardField>Cidade:  </UserCardField>
+                          <UserCardField>Cidade: </UserCardField>
                           <UserCardValue>{user.address.city}</UserCardValue>
                         </div>
                         <div>
-                          <UserCardField>Telefone:  </UserCardField>
+                          <UserCardField>Telefone: </UserCardField>
                           <UserCardValue>{user.phone}</UserCardValue>
                         </div>
                         <div>
@@ -105,7 +104,7 @@ export function Users() {
                     <ButtonContainer onClick={handleBackToFeed}>
                       <ArrowLeft size={20} color="#E1E1E6" weight="fill" />
                       Voltar para o Feed
-                      </ButtonContainer>
+                    </ButtonContainer>
                   </Container>
                 )}
               </>

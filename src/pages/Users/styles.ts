@@ -32,7 +32,6 @@ export const UserCardContent = styled.div`
   justify-content: center;
 `;
 
-
 export const UserCardField = styled.span`
   font-size: 1.125rem;
   font-weight: bold;
@@ -66,4 +65,3 @@ export const ButtonContainer = styled.button`
     padding: 0.5rem 4rem;
   }
 `;
-

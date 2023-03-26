@@ -63,9 +63,7 @@ export function Feed() {
   async function fetchPosts() {
     try {
       setIsLoading(true);
-      await api
-        .get("/posts")
-        .then((response) => setPosts(response.data));
+      await api.get("/posts").then((response) => setPosts(response.data));
     } catch (error) {
       console.log(error);
       throw new Error("Não foi possível carregar os posts da página");
