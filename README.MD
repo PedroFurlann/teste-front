@@ -1,16 +1,16 @@
-# Teste front end - Front-Blog :man_technologist:  
+# Teste front end - Front-Blog :man_technologist:
 
 ## Teste front end / Cenário 1 - Blog :bookmark_tabs:
 
 ### Tecnologias Usadas :computer:
 
-- ####  React
-- ####  Typescript
-- ####  Styled-Components
-- ####  Vite
-- ####  React Router DOM
+- #### React
+- #### Typescript
+- #### Styled-Components
+- #### Vite
+- #### React Router DOM
 
-### Deploy 
+### Deploy
 
 ### Como Iniciar a aplicação na sua máquina :arrow_down:
 
