@@ -26,7 +26,6 @@ $ cd teste-front
 $ npm install
 
 # Iniciar o projeto
-
 $ npm run dev
 
 ```
